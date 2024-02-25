@@ -2,35 +2,6 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# class ProductVectorizer:
-#     def __init__(self, method='tfidf', ngram_range=(1, 1), norm=None, query='binary', query_norm=None, out=None):
-#         self.configure(method=method, ngram_range=ngram_range, norm=norm, query=query, query_norm=query_norm, out=out)
-#         self.initialize_vectorizers()
-
-#     def configure(self, **params):
-#         """
-#         Configura os parâmetros do vetorizador.
-#         """
-#         for param, value in params.items():
-#             setattr(self, param, value)
-#         self
-
-#     def initialize_vectorizers(self):
-#         """
-#         Inicializa os vetorizadores com base nos parâmetros configurados.
-#         """
-#         # Sua lógica de inicialização existente aqui
-#         self.vectorizer = self.initialize_vectorizer()
-#         self.query = self.initialize_query()
-
-#     def set_params(self, **params):
-#         """
-#         Define os parâmetros do vetorizador e reinicializa conforme necessário.
-#         """
-#         self.configure(**params)
-#         self.vectorizer = self.initialize_vectorizer()
-
-
 class ProductVectorizer:
     """
     Esta classe realiza a vetorização de descrições de produtos utilizando técnicas de vetorização de texto,
