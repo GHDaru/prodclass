@@ -2,6 +2,35 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+# class ProductVectorizer:
+#     def __init__(self, method='tfidf', ngram_range=(1, 1), norm=None, query='binary', query_norm=None, out=None):
+#         self.configure(method=method, ngram_range=ngram_range, norm=norm, query=query, query_norm=query_norm, out=out)
+#         self.initialize_vectorizers()
+
+#     def configure(self, **params):
+#         """
+#         Configura os parâmetros do vetorizador.
+#         """
+#         for param, value in params.items():
+#             setattr(self, param, value)
+#         self
+
+#     def initialize_vectorizers(self):
+#         """
+#         Inicializa os vetorizadores com base nos parâmetros configurados.
+#         """
+#         # Sua lógica de inicialização existente aqui
+#         self.vectorizer = self.initialize_vectorizer()
+#         self.query = self.initialize_query()
+
+#     def set_params(self, **params):
+#         """
+#         Define os parâmetros do vetorizador e reinicializa conforme necessário.
+#         """
+#         self.configure(**params)
+#         self.vectorizer = self.initialize_vectorizer()
+
+
 class ProductVectorizer:
     """
     Esta classe realiza a vetorização de descrições de produtos utilizando técnicas de vetorização de texto,
@@ -32,15 +61,17 @@ class ProductVectorizer:
             query (str, optional): Método de vetorização para a consulta.
             query_norm (str, optional): Norma a ser aplicada na vetorização da consulta.
         """
-        self.method = method
-        self.query_method = query
-        self.ngram_range = ngram_range
-        self.norm = norm
-        self.norm_query = query_norm
-        self.fixtfidf = 0
-        self.fixtfidf = (self.method in {'tfidf'})
+        self.configure(method=method, ngram_range=ngram_range, norm=norm, query=query, query_norm=query_norm, out=out)
         self.vectorizer = self.initialize_vectorizer()
         self.query = self.initialize_query()   
+
+    def configure(self, **params):
+        """
+        Configura os parâmetros do vetorizador.
+        """
+        for param, value in params.items():
+            setattr(self, param, value)
+        self.fixtfidf = (self.method in {'tfidf'})
 
     def initialize_vectorizer(self):
         """
@@ -80,13 +111,13 @@ class ProductVectorizer:
             'tfidf': {'use_idf': True, 'smooth_idf': False},
             'tfidfscikit': {}
         }
-        options = query_options.get(self.query_method, {})
+        options = query_options.get(self.query, {})
         return TfidfVectorizer(
             token_pattern=r'(?u)\b\w+\b',
             lowercase=True,
             strip_accents='ascii',
             ngram_range=self.ngram_range,
-            norm=self.norm_query,
+            norm=self.query_norm,
             **options
         )
 
@@ -230,5 +261,23 @@ class ProductVectorizer:
 
     def fit_transform(self, X, y):
         self.fit(X,y)
-        return 
+        return self.transform(X)
+    
+    def set_params(self, **params):
+        """
+        Define os parâmetros do vetorizador.
+
+        Args:
+            **params: Dicionário de parâmetros e seus novos valores.
+        """
+        self.configure(**params)
+        # for param, value in params.items():
+        #     if hasattr(self, param):
+        #         setattr(self, param, value)
+        #     else:
+        #         raise ValueError(f"Parameter {param} is not valid for ProductVectorizer.")
+        
+        # Re-inicializa o vetorizador com os novos parâmetros
+        self.vectorizer = self.initialize_vectorizer()
+        self.query = self.initialize_query()
 
