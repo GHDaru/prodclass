@@ -173,5 +173,5 @@ class ExperimentManager:
             # Registra os resultados da execução
             self.tabela_execucoes.add(model_id, fold_idx, accuracy, f1_score_macro, tempo_processamento, estatisticas)
 
-    #def box_plot(self, sort = 'False', metric = 'both'):
+
 
