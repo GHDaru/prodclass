@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="prodclass",
-    version="0.1.1",  # Versão com utils
+    version="0.1.2",  # Versão com utils
     packages=find_packages(),
     install_requires=[
         "pandas>=1.2",
@@ -15,7 +15,7 @@ setup(
     # Meta-dados
     author="Gilsiley Henrique Darú",
     author_email="ghdaru@gmail.com",
-    description="Uma biblioteca Python para auxiliar na vetorização e categorização de descrições de produto.",
+    description="Uma biblioteca Python para auxiliar na vetorização e categorização de descrições de produto.  Possui benchmarks argmax e machine learning embutidos.",
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     url="https://github.com/GHDaru/prodclass/tree/master",

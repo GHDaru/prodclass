@@ -1,4 +1,4 @@
-from prodclass.src.vectorizer import ProductVectorizer
+from prodclass.vectorization.product_vectorizer import ProductVectorizer
 import numpy as np
 
 class ArgmaxClassifier(ProductVectorizer):
