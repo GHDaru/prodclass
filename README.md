@@ -1,50 +1,73 @@
-# Meu Projeto de Modelo
+# ProdClass
 
-Descrição do projeto: Este projeto visa desenvolver, testar e implantar modelos de machine learning para classificação de descrições de produtos. Utiliza técnicas avançadas de vetorização de texto e algoritmos de classificação para prever categorias de produtos baseadas em suas descrições.
+## Descrição
 
-## Estrutura do Projeto
+`prodclass` é uma biblioteca Python desenvolvida para facilitar a vetorização e a categorização de descrições de produtos. Utilizando técnicas avançadas de processamento de linguagem natural e aprendizado de máquina, a biblioteca permite transformar texto em formato numérico e classificar descrições de produtos em categorias definidas pelo usuário. Ideal para projetos de e-commerce, gestão de estoques, e análise de dados de produtos.
 
-O projeto está organizado da seguinte forma:
+A biblioteca oferece funcionalidades robustas para transformar descrições textuais de produtos em representações vetoriais que podem ser facilmente utilizadas por modelos de machine learning. Além disso, `ProdClass` inclui ferramentas para a categorização automática de produtos, permitindo uma classificação eficaz baseada no conteúdo textual das descrições.
 
-- `data/`: Contém os datasets usados pelo modelo, incluindo dados brutos (`raw/`) e dados processados (`processed/`).
-- `notebooks/`: Jupyter notebooks para exploração de dados, análises preliminares e prototipagem de modelos.
-- `src/`: Código-fonte do projeto, incluindo scripts de manipulação de banco de dados, gestão de experimentos, modelos de machine learning e funções utilitárias.
-- `tests/`: Testes automatizados para garantir a qualidade e a confiabilidade do código.
-- `requirements.txt`: Lista de dependências necessárias para executar o projeto.
-- `README.md`: Este arquivo, contendo a documentação do projeto.
+Desenvolvido com foco na simplicidade e na flexibilidade, `ProdClass` suporta diversas estratégias de vetorização, como TF-IDF, e oferece integração com modelos de classificação populares, possibilitando aos usuários experimentar e escolher a configuração que melhor atende às suas necessidades.
 
-### Como usar
+## Funcionalidades
 
-1. **Instalação das Dependências**
-
-   Para instalar as dependências necessárias, execute:
-
-   pip install -r requirements.txt
+- **Vetorização de Descrições de Produtos**: Transforma descrições textuais em vetores numéricos utilizando métodos como TF-IDF.
+- **Categorização Automática**: Facilita a classificação de produtos em categorias pré-definidas com base em suas descrições.
+- **Integração com Modelos de Machine Learning**: Compatível com diversos classificadores populares para a realização de tarefas de classificação.
+- **Avaliação de Desempenho**: Inclui ferramentas para avaliar a precisão e a eficácia dos modelos de classificação.
+- **Visualização de Resultados**: Oferece utilitários para visualizar os resultados das classificações e avaliações de desempenho.
 
 
-2. **Preparação dos Dados**
+## Instalação
 
-Coloque seus dados brutos em `data/raw/` e processe-os conforme necessário. O resultado deve ser salvo em `data/processed/` para uso posterior pelo modelo.
+### Pré-requisitos
 
-3. **Exploração de Dados e Prototipagem**
+Antes de instalar a biblioteca `prodclass`, certifique-se de ter o Python instalado em sua máquina. `prodclass` é compatível com Python 3.6 ou superior.
 
-Use os notebooks em `notebooks/` para explorar os dados e criar protótipos de modelos.
+### Instalação via pip
 
-4. **Execução do Modelo**
+Para instalar a biblioteca `prodclass` utilizando pip, abra um terminal e execute o seguinte comando:
 
-O código-fonte para treinar e avaliar modelos está localizado em `src/`. Veja os scripts específicos para instruções detalhadas sobre como executar cada modelo.
+```bash
+pip install prodclass
+```
 
-5. **Testes**
+### Instalação
+pip install prodclass
 
-Execute os testes em `tests/` para garantir que as alterações no código não quebrem funcionalidades existentes.
+## Exemplos de Uso
 
-### Contribuindo
+### Classificação de Descrições de Produtos
 
-Sinta-se livre para contribuir com o projeto. Por favor, envie um pull request ou abra uma issue para discutir o que você gostaria de mudar.
+O seguinte exemplo demonstra como utilizar a biblioteca `prodclass` para vetorizar e classificar descrições de produtos:
 
-### Licença
+```python
+from prodclass.examples import get_dataset
+dataset = get_dataset()
 
-[Inserir tipo de licença aqui] - Veja o arquivo LICENSE para mais detalhes.
+from prodclass.vectorization import ProductVectorizer
+classifier = ProductVectorizer()
+X = dataset.nm_item.values
+y = dataset.nm_product.values
 
+classifier.fit(X, y)
+predictions = classifier.predict(["Leite condensado parmalat"], out='string')
 
+print(predictions)
+```
 
+Este exemplo carrega um conjunto de dados de exemplo, inicializa o vetorizador de produtos, ajusta o modelo aos dados e, em seguida, faz uma previsão para uma nova descrição de produto.
+```
+
+Lembre-se de ajustar os URLs e quaisquer outros detalhes específicos conforme necessário para o seu projeto. Este esboço fornece uma base sólida que você pode expandir com mais informações e exemplos conforme necessário.
+
+## Contribuição
+
+Se você estiver interessado em contribuir para o `ProdClass`, por favor, consulte nossas diretrizes de contribuição.
+
+## Licença
+
+`ProdClass` é distribuído sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## Contato
+
+Para suporte ou colaboração, entre em contato através de ghdaru@gmail.com.
