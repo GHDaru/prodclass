@@ -56,9 +56,6 @@ print(predictions)
 ```
 
 Este exemplo carrega um conjunto de dados de exemplo, inicializa o vetorizador de produtos, ajusta o modelo aos dados e, em seguida, faz uma previsão para uma nova descrição de produto.
-```
-
-Lembre-se de ajustar os URLs e quaisquer outros detalhes específicos conforme necessário para o seu projeto. Este esboço fornece uma base sólida que você pode expandir com mais informações e exemplos conforme necessário.
 
 ## Contribuição
 
