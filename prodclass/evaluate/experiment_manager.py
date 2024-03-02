@@ -1,6 +1,6 @@
-from models.tabela_experimentos import TabelaExperimentos
-from models.tabela_modelos import TabelaModelos
-from models.tabela_execucoes import TabelaExecucoes
+from table_models.tabela_experimentos import TabelaExperimentos
+from table_models.tabela_modelos import TabelaModelos
+from table_models.tabela_execucoes import TabelaExecucoes
 from sklearn.model_selection import KFold
 from sklearn.metrics import accuracy_score, f1_score
 import itertools

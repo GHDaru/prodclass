@@ -1,1 +1,1 @@
-from .vectorization import ProductVectorizer
+from .product_vectorizer import ProductVectorizer
